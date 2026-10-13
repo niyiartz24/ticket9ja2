@@ -5,17 +5,64 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
-enum Role { SUPER_ADMIN ORGANIZER STAFF }
-enum UserStatus { ACTIVE SUSPENDED }
-enum InvitationStatus { PENDING ACCEPTED REVOKED EXPIRED }
-enum EventStatus { DRAFT PUBLISHED CANCELLED COMPLETED }
-enum OrderStatus { PENDING PAID FAILED EXPIRED CANCELLED REFUNDED }
-enum PaymentStatus { INITIATED PENDING SUCCEEDED FAILED REFUNDED }
-enum TicketStatus { VALID USED CANCELLED REFUNDED }
-enum ScanResult { ADMITTED DUPLICATE WRONG_EVENT NOT_FOUND INVALID_STATUS UNAUTHORIZED }
-enum EmailStatus { PENDING SENT FAILED }
+enum Role {
+  SUPER_ADMIN
+  ORGANIZER
+  STAFF
+}
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REVOKED
+  EXPIRED
+}
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  CANCELLED
+  COMPLETED
+}
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  EXPIRED
+  CANCELLED
+  REFUNDED
+}
+enum PaymentStatus {
+  INITIATED
+  PENDING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+}
+enum TicketStatus {
+  VALID
+  USED
+  CANCELLED
+  REFUNDED
+}
+enum ScanResult {
+  ADMITTED
+  DUPLICATE
+  WRONG_EVENT
+  NOT_FOUND
+  INVALID_STATUS
+  UNAUTHORIZED
+}
+enum EmailStatus {
+  PENDING
+  SENT
+  FAILED
+}
 
 model User {
   id            String     @id @default(cuid())
